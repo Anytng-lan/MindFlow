@@ -14,7 +14,6 @@ MindFlow is a comprehensive productivity tool built for both professionals and s
 - [Usage](#usage)
 - [Future Enhancements](#future-enhancements)
 - [Contributing](#contributing)
-- [License](#license)
 
 ---
 
@@ -73,6 +72,8 @@ MindFlow leverages a set of tools and libraries to create a high-performance app
 - **IDE (PyCharm and VS Code)**: PyCharm for core development with VS Code used for quick adjustments and minor improvements.
 - **Git**: Version control for collaborative development, tracking changes, and code stability.
 
+---
+
 ## Installation
 
 To set up the project locally:
@@ -106,6 +107,7 @@ Planned improvements include:
 - **Multi-Device Synchronization**: Cloud-based data sync for access across multiple devices.
 - **Enhanced Security**: Add data encryption for greater security, especially with sensitive productivity data.
 
+---
 
 ## Contributing
 We welcome contributions to MindFlow! Follow these steps to contribute:
@@ -125,9 +127,6 @@ git commit -m "Add feature-name"
 git push origin feature-name
 ```
 *5. Open a pull request.*
-
-## License
-This project is licensed under the **MIT** License. See LICENSE for more information.
 
 
 **MindFlow** is crafted to be a flexible, scalable productivity solution that empowers users to stay organized, focus effectively, and achieve their goals. We are committed to continuously improving and expanding MindFlow’s capabilities to serve a growing community of productivity-focused individuals.
