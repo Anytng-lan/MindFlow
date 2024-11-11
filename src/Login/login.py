@@ -8,9 +8,8 @@ import time
 
 class LoginPortal:
     def __init__(self, master, on_success):
+        # Store the master window and callback
         self.master = master
-        self.master.geometry("500x600")
-        self.master.title("Secure Login Portal")
         self.on_success = on_success
         
         # Create main frame with padding
@@ -33,7 +32,7 @@ class LoginPortal:
             self.welcome_frame,
             text="Welcome Back",
             font=("SF Mono", 24, "bold"),
-            bootstyle="primary"  # Changed from dark to primary for better visibility
+            bootstyle="primary"
         )
         self.welcome_label.pack(pady=10)
         
@@ -48,7 +47,6 @@ class LoginPortal:
         
         self.animate_welcome()
         
-        # Rest of the code remains the same...
         # Login form frame
         self.form_frame = ttk.Frame(self.main_frame)
         self.form_frame.pack(fill=X, pady=20)
@@ -66,7 +64,7 @@ class LoginPortal:
         self.username = ttk.Entry(
             self.username_frame,
             font=("SF Mono", 14),
-            bootstyle="primary",  # Changed to match welcome message theme
+            bootstyle="primary",
             width=30
         )
         self.username.pack(side=LEFT, padx=5)
@@ -88,7 +86,7 @@ class LoginPortal:
             self.password_frame,
             show="•",
             font=("SF Mono", 14),
-            bootstyle="primary",  # Changed to match welcome message theme
+            bootstyle="primary",
             width=30
         )
         self.password.pack(side=LEFT, padx=5)
@@ -101,7 +99,7 @@ class LoginPortal:
             self.password_frame,
             text="👁",
             command=self.toggle_password,
-            bootstyle="primary-link",  # Changed to match theme
+            bootstyle="primary-link",
             width=3
         )
         self.show_password.pack(side=LEFT)
@@ -112,7 +110,7 @@ class LoginPortal:
             self.form_frame,
             text="Remember me",
             variable=self.remember,
-            bootstyle="primary-round-toggle"  # Changed to match theme
+            bootstyle="primary-round-toggle"
         )
         self.remember_checkbox.pack(pady=10)
         
@@ -126,15 +124,6 @@ class LoginPortal:
         )
         self.login_button.pack(pady=20)
         
-        # Forgot password link
-        self.forgot_password = ttk.Button(
-            self.form_frame,
-            text="Forgot Password?",
-            command=self.forgot_password_clicked,
-            bootstyle="primary-link"  # Changed to match theme
-        )
-        self.forgot_password.pack()
-        
         # Error message label
         self.error_label = ttk.Label(
             self.form_frame,
@@ -144,28 +133,12 @@ class LoginPortal:
         )
         self.error_label.pack(pady=10)
         
-        # Sign up link
-        self.signup_frame = ttk.Frame(self.main_frame)
-        self.signup_frame.pack(fill=X, pady=20)
-        
-        ttk.Label(
-            self.signup_frame,
-            text="Don't have an account?"
-        ).pack(side=LEFT, padx=5)
-        
-        ttk.Button(
-            self.signup_frame,
-            text="Sign Up",
-            command=self.signup_clicked,
-            bootstyle="primary-link"  # Changed to match theme
-        ).pack(side=LEFT)
-        
-        # Bind enter key to login
-        self.master.bind("<Return>", lambda e: self.authenticate())
-        
         # Track login attempts
         self.login_attempts = 0
         self.locked_until = None
+        
+        # Bind enter key to login
+        self.master.bind("<Return>", lambda e: self.authenticate())
 
     def animate_welcome(self):
         """Add subtle animation to welcome message"""
@@ -180,7 +153,6 @@ class LoginPortal:
                 self.master.update()
         self.master.after(1000, animate)
 
-    # Rest of the methods remain the same...
     def on_entry_click(self, entry, default_text):
         """Clear placeholder text on click"""
         if entry.get() == default_text:
@@ -199,6 +171,44 @@ class LoginPortal:
         """Toggle password visibility"""
         current = self.password.cget("show")
         self.password.configure(show="" if current == "•" else "•")
+
+    def show_error(self, message):
+        """Display error message with animation"""
+        self.error_label.configure(text=message)
+        def fade_out():
+            self.error_label.configure(text="")
+        self.master.after(3000, fade_out)
+
+    def authenticate(self):
+        """Handle login authentication"""
+        if self.locked_until and time.time() < self.locked_until:
+            remaining = int(self.locked_until - time.time())
+            self.show_error(f"Account locked. Try again in {remaining} seconds")
+            return
+        
+        if not self.validate_input():
+            return
+        
+        # Simulate loading
+        self.login_button.configure(text="Logging in...", state="disabled")
+        self.master.update()
+        time.sleep(1)
+        
+        # Placeholder authentication
+        if self.username.get() == "user" and self.password.get() == "password":
+            self.login_button.configure(text="Success!", bootstyle="success")
+            self.master.update()
+            time.sleep(0.5)  # Short delay to show success message
+            self.master.destroy()  # Close login window
+            self.on_success()  # Call the success callback
+        else:
+            self.login_attempts += 1
+            if self.login_attempts >= 3:
+                self.locked_until = time.time() + 30
+                self.show_error("Too many attempts. Account locked for 30 seconds")
+            else:
+                self.show_error(f"Invalid credentials ({3-self.login_attempts} attempts remaining)")
+            self.login_button.configure(text="Login", state="normal")
 
     def validate_input(self):
         """Validate username and password"""
@@ -244,7 +254,9 @@ class LoginPortal:
         # Placeholder authentication
         if self.username.get() == "user" and self.password.get() == "password":
             self.login_button.configure(text="Success!", bootstyle="success")
-            self.master.after(1000, self.on_success)
+            self.master.update()
+            time.sleep(0.5)  # Short delay to show success message
+            self.on_success()  # Call the success callback
         else:
             self.login_attempts += 1
             if self.login_attempts >= 3:
@@ -271,11 +283,11 @@ class LoginPortal:
         )
 
 # Example usage:
-if __name__ == "__main__":
-    root = ttk.Window(themename="cosmo")
-    def on_login_success():
-        print("Login successful!")
-        root.destroy()
+# if __name__ == "__main__":
+#     root = ttk.Window(themename="cosmo")
+#     def on_login_success():
+#         print("Login successful!")
+#         root.destroy()
     
-    app = LoginPortal(root, on_login_success)
-    root.mainloop()
+#     app = LoginPortal(root, on_login_success)
+#     root.mainloop()
