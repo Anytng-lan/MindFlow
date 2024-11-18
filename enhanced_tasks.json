@@ -1,0 +1,62 @@
+[
+  {
+    "id": "6998c08f-a4b6-4eac-ad5a-015ca6743b5a",
+    "title": "Create final project report for MindFlow",
+    "description": "Make the final report and enhance the modularity aand functionality of the application",
+    "due_date": "2024-11-20",
+    "priority": "Medium",
+    "status": "Pending",
+    "created_at": "2024-11-11T11:32:12.725528",
+    "completed_at": null
+  },
+  {
+    "id": "640c1c80-f244-44bb-a397-ed2746159d8f",
+    "title": "Sample Task for Java",
+    "description": "Test class of the Java functionality",
+    "due_date": "2024-11-15",
+    "priority": "Medium",
+    "status": "Completed",
+    "created_at": "2024-11-11T11:43:59.897372",
+    "completed_at": "2024-11-11T11:44:03.515431"
+  },
+  {
+    "id": "9938fcfd-e6f2-4d9f-8781-d9d578cc3a81",
+    "title": "Prepare OS CA-3",
+    "description": "Prepare Unit 3-5",
+    "due_date": "2024-11-12",
+    "priority": "High",
+    "status": "Completed",
+    "created_at": "2024-11-11T23:04:45.757243",
+    "completed_at": "2024-11-17T16:50:25.816120"
+  },
+  {
+    "id": "398dd7bd-045e-40d5-bbb1-54cae482e152",
+    "title": "Create Dashboard for PowerBI",
+    "description": "Make charts",
+    "due_date": "2024-11-13",
+    "priority": "Medium",
+    "status": "Completed",
+    "created_at": "2024-11-13T15:28:26.994394",
+    "completed_at": "2024-11-17T16:50:28.721514"
+  },
+  {
+    "id": "49f610e8-afdd-4ba9-adc9-50a456d7992d",
+    "title": "English teacher is fat",
+    "description": "facts",
+    "due_date": "2024-11-14",
+    "priority": "High",
+    "status": "Completed",
+    "created_at": "2024-11-14T21:31:10.726850",
+    "completed_at": "2024-11-17T16:50:31.563618"
+  },
+  {
+    "id": "79a74462-ee74-48ca-9f8d-bc5a72ddfee4",
+    "title": "test tag",
+    "description": "hhhh\t\t",
+    "due_date": "2024-11-18",
+    "priority": "Low",
+    "status": "Pending",
+    "created_at": "2024-11-17T17:07:23.148388",
+    "completed_at": null
+  }
+]
