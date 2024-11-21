@@ -60,7 +60,10 @@ MindFlow’s architecture is designed with modularity and user experience in min
 3. **Layered Design Pattern**: The interface, business logic, and data layers are separated to facilitate easy updates and maintenance.
 4. **Minimalist UI/UX Design**: Uses ttkbootstrap for modern aesthetics with a high-contrast color scheme and accessibility features like keyboard shortcuts and tooltips.
 
-![MindFlow V1](https://github.com/user-attachments/assets/21f71635-0462-4217-abe9-2d9526b3117e)
+![blueprint](https://github.com/user-attachments/assets/70ae1bfa-0fe6-49b7-be17-64837e465337)
+
+![FlashCard](https://github.com/user-attachments/assets/3528ebcd-282d-4400-b1ab-3abd3999f548)
+
 
 ## Application Tools
 
