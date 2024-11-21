@@ -151,12 +151,12 @@ class Dashboard:
                 "route": "stopwatch",
             },
             {
-                "name": "NotesHub",
-                "icon": "📔",
-                "description": "Note Taking",
-                "metrics": "3 notes created today",
+                "name": "FlashCards",
+                "icon": "🃏",
+                "description": "Learning Companion",
+                "metrics": "25 cards reviewed",
                 "style": "success",
-                "route": "noteshub",
+                "route": "flashcards",
             },
         ]
 

@@ -2,18 +2,20 @@
 import ttkbootstrap as ttk
 from ttkbootstrap.constants import *
 from ToDo.TODO import EnhancedTodoList
+from tkinter import messagebox
 from Stopwatch.stopwatch import EnhancedStopwatch
 from PomodoroTimer.pomodoro import PomodoroTimer
 from Dashboard.dashborad import Dashboard
 from Login.llogin import LoginPortal
-
+from Flashcard.flash import FlashcardManager
+from Flashcard.flash import StudySession
 
 class MainApplication:
     def __init__(self):
         # Create the main window
         self.root = ttk.Window(themename="minty")
         self.root.title("Personal Productivity Hub")
-        self.root.geometry("800x600")
+        self.root.geometry("1000x800")
 
         # Initialize class variables
         self.current_window = None
@@ -22,7 +24,7 @@ class MainApplication:
             "todoist": self.open_todo,
             "stopwatch": self.open_stopwatch,
             "pomodoro": self.open_pomodoro,
-            "noteshub": self.open_notes,
+            "flashcards": self.open_flashcards,
         }
 
         # Create login window as the initial view
@@ -130,7 +132,9 @@ class MainApplication:
 
         pomodoro = PomodoroTimer(self.current_window)
 
-    def open_notes(self):
+
+    def open_flashcards(self):
+        print("Opening Flashcards...")  # Debug print
         if self.current_window:
             self.current_window.destroy()
 
@@ -141,14 +145,23 @@ class MainApplication:
             self.current_window,
             text="← Back to Dashboard",
             command=self.show_dashboard,
-            bootstyle="success-outline",
+            bootstyle="primary-outline",
             width=20,
         )
         back_button.pack(pady=10, padx=10, anchor="nw")
 
-        ttk.Label(
-            self.current_window, text="NotesHub Coming Soon!", font=("SF Mono", 20)
-        ).pack(pady=100)
+        try:
+            # # Create a new top-level window for the FlashcardManager
+            # flashcard_window = ttk.Toplevel(self.root)
+            # flashcard_window.title("MindFlow Flashcards")
+            # flashcard_window.geometry("900x700")
+
+            # Initialize the FlashcardManager with the new window
+            flashcard_app = FlashcardManager(self.current_window)
+            print("Flashcard Manager initialized successfully")
+        except Exception as e:
+            print(f"Error initializing FlashcardManager: {e}")
+            messagebox.showerror("Initialization Error", str(e))
 
     def run(self):
         """Start the application"""

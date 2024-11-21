@@ -517,13 +517,13 @@ class EnhancedStopwatch(ttk.Frame):
 
         # Create statistics labels with tooltips
         for label_text, var_key in [
-            ("Best Lap", "best_lap"),
-            ("Average Lap", "average_lap"),
-            ("Worst Lap", "worst_lap"),
-            ("Total Laps", "total_laps"),
+            ("Longest Session", "best_lap"),
+            ("Average Study Lap", "average_lap"),
+            ("Shortest Study Lap", "worst_lap"),
+            ("Total Sessions", "total_laps"),
             ("Total Time", "total_time"),
             ("Std Deviation", "std_deviation"),
-            ("Current Pace", "current_pace"),
+            ("Self-Ranking", "current_pace"),
         ]:
             frame = ttk.Frame(stats_frame)
             frame.pack(fill="x", pady=2)

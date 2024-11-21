@@ -331,28 +331,29 @@ class EnhancedTodoList:
         details_dialog.transient(self.master)
         details_dialog.grab_set()
         self.master.wait_window(details_dialog)
-
     def complete_task(self):
         """Mark selected task as completed"""
         task = self.get_selected_task()
         if not task:
-            messagebox.showwarning("No Selection", "Please select a task to complete")
+            messagebox.showwarning("No Selection", 
+            "Please select a task to complete")
             return
 
         task.status = "Completed"
         task.completed_at = datetime.now().isoformat()
         self.save_tasks()
         self.update_view()
-
     def delete_task(self):
         """Delete selected task"""
         task = self.get_selected_task()
         if not task:
-            messagebox.showwarning("No Selection", "Please select a task to delete")
+            messagebox.showwarning("No Selection", 
+                "Please select a task to delete")
             return
 
         if messagebox.askyesno(
-            "Confirm Delete", "Are you sure you want to delete this task?"
+            "Confirm Delete", 
+            "Are you sure you want to delete this task?"
         ):
             self.tasks.remove(task)
             self.save_tasks()
